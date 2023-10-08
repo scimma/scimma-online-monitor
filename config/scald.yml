@@ -1,0 +1,25 @@
+### configuration file for monitoring
+
+#--------------------------------------------------------------
+### schema configuration
+
+schemas:
+  heartbeat:
+    measurement: heartbeat
+    column: data
+    tag: not_used
+    tag_key: not_used
+    aggregate: None
+
+#--------------------------------------------------------------
+### data backend configuration
+
+backends:
+  default:
+    backend: influxdb
+    db: scimma_online_test
+    hostname: influx.infra.scimma.org
+    port: 8010
+    auth: true
+    https: true
+    check_certs: false
