@@ -21,9 +21,14 @@ RUN cd /usr/local/src && \
 # ADD scald configiguration file
 ADD config/scald.yml config/scald.yml
 
-# ADD script
+# ADD scripts
+ADD scripts/run_helloworld.py /root/run_helloworld.py
+ADD scripts/utils.py /root/utils.py
 ADD scripts/helloworld.py /root/helloworld.py
+
+# Modify permissions
+RUN chmod ugo+rx /root/run_helloworld.py
 RUN chmod ugo+rx /root/helloworld.py
 
 WORKDIR /tmp
-ENTRYPOINT ["/root/helloworld.py"]
+ENTRYPOINT ["/root/run_helloworld.py"]

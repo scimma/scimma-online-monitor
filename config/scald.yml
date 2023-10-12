@@ -17,7 +17,7 @@ schemas:
 backends:
   default:
     backend: influxdb
-    db: scimma_online_test
+    db: hop
     hostname: influx.infra.scimma.org
     port: 8010
     auth: true
