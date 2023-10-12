@@ -6,18 +6,18 @@ def getCredsString(region, secret):
     s = json.loads(subprocess.Popen([cmd], shell=True,
                            stdout=subprocess.PIPE).stdout.read().decode())
     credsjson = s["SecretString"]
-    creds = json.loads(cjson)
+    creds = json.loads(credsjson)
 
     return creds
 
 def getInfluxUser(region, secret):
     creds = getCredsString(region, secret)
-    user = creds.value().split(":")[0]
+    user = creds["creds"].split(":")[0]
 
     return user
 
 def getInfluxPass(region, secret):
     creds = getCredsString(region, secret)
-    password = creds.value().split(":")[1]
+    password = creds["creds"].split(":")[1]
 
     return password
